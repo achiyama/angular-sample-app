@@ -26,8 +26,8 @@ export class AppComponent {
 
   title = 'angular-sample-app';
 
-  count = signal(0);
-  doubleCount = computed(() => this.count() * 2);
+  readonly count = signal(0);
+  readonly doubleCount = computed(() => this.count() * 2);
 
   increment() {
     this.count.update((value) => value + 1);
