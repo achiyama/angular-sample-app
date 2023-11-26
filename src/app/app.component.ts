@@ -15,7 +15,7 @@ import { HomeComponent } from './home/home.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   imports: [CommonModule, RouterOutlet, HomeComponent],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   constructor() {
@@ -23,6 +23,7 @@ export class AppComponent {
       console.log('count changed', this.count());
     });
   }
+
   title = 'angular-sample-app';
 
   count = signal(0);
