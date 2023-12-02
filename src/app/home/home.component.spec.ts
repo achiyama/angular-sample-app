@@ -19,4 +19,12 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('test', () => {
+    fixture.componentInstance.value = 'test';
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('h1')?.textContent).toContain(
+      'test',
+    );
+  });
 });

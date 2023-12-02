@@ -8,6 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ import { HomeComponent } from './home/home.component';
   imports: [CommonModule, RouterOutlet, HomeComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements DoCheck {
   constructor() {
     effect(() => {
       console.log('count changed', this.count());
@@ -26,6 +27,8 @@ export class AppComponent {
 
   title = 'angular-sample-app';
 
+  hoge = 0;
+
   readonly count = signal(0);
   readonly doubleCount = computed(() => this.count() * 2);
 
@@ -33,7 +36,15 @@ export class AppComponent {
     this.count.update((value) => value + 1);
   }
 
+  onHogeIncrement() {
+    this.hoge++;
+  }
+
   set3() {
     this.count.set(3);
+  }
+
+  ngDoCheck(): void {
+    console.log('AppComponent ngDoCheck');
   }
 }
